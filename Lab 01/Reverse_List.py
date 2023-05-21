@@ -17,6 +17,31 @@ new_list = ["h", "e", "l", "l", "o"]
 print(new_list)
 print("Reverse of the list is : ")
 print(new_list[::-1])
-print("Another mathod to reverse is : ")
+print("Another method to reverse is : ")
 new_list.reverse()
+print(new_list)
+
+#Reverse String by function
+
+new_list = ["h", "e", "l", "l", "o", "o"]
+print("Given List : ")
+print(new_list)
+
+#for i in range(0, int(len(str) / 2)):
+    #str[i] = str[len-1]
+
+print(len(new_list))
+i = 0
+j = len(new_list) - 1
+print(j)
+
+while (i < j):
+
+    temp = new_list[i]
+    new_list[i] =new_list[j]
+    new_list[j] = temp
+    i = i+1
+    j = j+1
+
+print("Reversed List : ")
 print(new_list)
