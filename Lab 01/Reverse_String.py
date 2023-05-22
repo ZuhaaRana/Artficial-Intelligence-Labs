@@ -1,4 +1,5 @@
-#REVERSE A LIST
+
+#REVERSE A STRING
 
 # Write a function that reverses a string. The input string is given
 # as an array of characters. You can use Python list to create the
@@ -13,36 +14,33 @@
 # Input: ["H","a","n","n","a","h"]
 # Output: ["h","a","n","n","a","H"]
 
-print("List : ")
+#Reverse a string by function
+
+def reverse_string(new_string):  
+    reversed_string = ""
+    for i in new_string:  
+        reversed_string = i + reversed_string 
+    return reversed_string  
+     
+new_string =  input("Enter a string to reverse : ") 
+
+print("The original string is: ", new_string)  
+print("The reversed string is", reverse_string(new_string))
+
+#Reverse a string using slicing
+
 new_list = ["h", "e", "l", "l", "o"]
+print("Given List : ")
 print(new_list)
 print("Reverse of the list is : ")
 print(new_list[::-1])
-print("Another method to reverse is : ")
+
+#Python builtin function to reverse a string
+
+new_list = ["h", "e", "l", "l", "o"]
+print("Given List : ")
+print(new_list)
+print("Reversed string : ")
 new_list.reverse()
 print(new_list)
 
-#Reverse String by function
-
-new_list = ["h", "e", "l", "l", "o", "o"]
-print("Given List : ")
-print(new_list)
-
-#for i in range(0, int(len(str) / 2)):
-    #str[i] = str[len-1]
-
-print(len(new_list))
-i = 0
-j = len(new_list) - 1
-print(j)
-
-while (i < j):
-
-    temp = new_list[i]
-    new_list[i] =new_list[j]
-    new_list[j] = temp
-    i = i+1
-    j = j+1
-
-print("Reversed List : ")
-print(new_list)
