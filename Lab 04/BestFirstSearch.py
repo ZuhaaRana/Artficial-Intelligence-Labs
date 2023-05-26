@@ -1,6 +1,6 @@
-# BEST FIRST SEARCH ALGORITHM
+#BEST FIRST SEARCH ALGORITHM
 
-# Value of heuristics
+#Value of heuristics
 A = 40
 B = 32
 C = 25
@@ -9,6 +9,7 @@ E = 19
 F = 17
 H = 10
 G = 0
+
 graph = 
 {
     'A': [('B', B), ('C', C), ('D', D)],
@@ -27,7 +28,6 @@ def heuristic(path):
     for (node, cost) in path:
         value = cost
     return value, path[-1][0]
-
 
 def BEST_FIRST_SEARCH(graph, start, goal):
     visited = []
