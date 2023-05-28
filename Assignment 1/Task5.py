@@ -13,3 +13,15 @@ for  i in range(start,end):
         print(i, " is Odd.")
 
 
+#(Using while loop)
+
+start = int(input("Enter starting value : "))
+end = int(input("Enter ending value : "))
+i = start
+while i <= end:
+    if i%2==0:
+        print(i, " is Even.")
+        i+=1
+    else:
+        print(i, " is Odd.")
+        i+=1
