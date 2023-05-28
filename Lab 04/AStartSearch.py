@@ -83,6 +83,7 @@ class Graph:
                     second_queue.append(i[1] + self.heuristic[i[0]])
         g.print_path(start,Parent)
 
+
 g = Graph()
 print("Path for A* Search is ")
 g.add_new_vertices()
