@@ -1,3 +1,10 @@
+
+# Task 14
+# Write a python code to make a list. Populate it with random number
+#using random number generator and then find the min and max value from
+#the list. Size of list should be given by user. Note: do not use max 
+#and min built-in function.
+
 from random import randint
 def minmax1 (x):
     minimum = maximum = x[0]
