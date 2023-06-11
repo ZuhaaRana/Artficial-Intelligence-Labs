@@ -1,55 +1,74 @@
-#Uniform Cost Search Algorithm
-
 from collections import defaultdict
-from queue import PriorityQueue
 
 class Graph:
-    def __init__(self, directed):
+    def __init__(self, total_vertices):
+        global start
         self.graph = defaultdict(list)
-        self.directed = directed
+        self.vertices = total_vertices
+        self.explored = []
+        self.total_cost = 0
+        self.path_for_climbing = []
 
-    def add_edge_for_UCS(self, u, v, weight):
-        #for directed graph
-        if self.directed:
-            value = (weight, v)
-            #print(value)
-            self.graph[u].append(value)
-        # for undirected graph
-        else:
-            value = (weight, v)
-            self.graph[u].append(value)
-            value = (weight, u)
-            self.graph[v].append(value)
+    def add_edge(self, u, v):
+        self.graph[u].append(v)
 
-    def UCS(self, current_node, goal_node):
-        explored = []
-        total_cost = 0
-        queue_for_cost = PriorityQueue()
-        queue_for_cost.put((0, current_node))
-        while not queue_for_cost.empty():
-            values = queue_for_cost.get()
-            current_node = values[1]
-            total_cost = total_cost+values[0]
-            if current_node == goal_node:
-                print(current_node, end=" ")
-                print("\nTotal cost of the path is : ",total_cost)
-                queue_for_cost.queue.clear()
+    def add_all_edges(self):
+        g.add_edge('A', 'B')
+        g.add_edge('A', 'C')
+        g.add_edge('A', 'D')
+        g.add_edge('B', 'A')
+        g.add_edge('B', 'C')
+        g.add_edge('B', 'D')
+        g.add_edge('C', 'A')
+        g.add_edge('C', 'B')
+        g.add_edge('C', 'D')
+        g.add_edge('D', 'A')
+        g.add_edge('D', 'B')
+        g.add_edge('D', 'C')
+
+    def add_values(self):
+        actualValues = {'AB': 25, 'AD': 15, 'BD': 45, 'BC': 10, 'CD': 5, 'AC': 10, 'BA': 25, 'DA': 15, 'DB': 45,
+                        'CB': 10, 'DC': 5, 'CA': 10, }
+
+    def find_actual_path_value(self, optimal_path):
+        for i in range(len(optimal_path)-1):
+            self.total_cost += g.add_values([optimal_path[i]+optimal_path[i+1]])
+        return self.total_cost
+
+    def all_sol(self,explored, visited):
+        self.explored.append(visited)
+        for i in self.graph[visited]:
+            if not self.explored:
+                print(len(self.path_for_climbing))
+            if i not in self.explored:
+                self.all_sol(self.explored.copy(), i)
             else:
-                if current_node in explored:
-                    continue
-                print(current_node, end=" ")
-                explored.append(current_node)
-                for neighbour in self.graph[current_node]:
-                    queue_for_cost.put((neighbour[0], neighbour[1]))
+                if len(self.explored) == self.vertices:
+                    if self.explored not in self.path_for_climbing and start in self.graph[self.explored[len(self.explored) - 1]]:
+                        self.explored.append(start)
+                        self.path_for_climbing.append(self.explored)
 
-g = Graph(True)
-g.add_edge_for_UCS('S', 'A', 1)
-g.add_edge_for_UCS('S', 'G', 4)
-g.add_edge_for_UCS('A', 'B', 3)
-g.add_edge_for_UCS('A', 'C', 1)
-g.add_edge_for_UCS('C', 'D', 7)
-g.add_edge_for_UCS('B', 'D', 3)
-g.add_edge_for_UCS('C', 'G', 2)
-g.add_edge_for_UCS('D', 'G', 4)
-print("Path for Uniform Cost Search is : ", end=" ")
-g.UCS('S', 'G')
+    def hill_climbing(self):
+        start = "D"
+        self.all_sol( self.explored,start)
+        if not len(self.path_for_climbing):
+            print("No Path.")
+            return
+        cost = self.find_actual_path_value(self.path_for_climbing[0])
+        self.optimal_path()
+    
+    def optimal_path(self):
+        for i in range(1, len(self.path_for_climbing)):
+            current_path = self.find_actual_path_value(self.path_for_climbing[i])
+            if current_path < cost:
+                cost = current_path
+                continue
+            else:
+                break
+        print(f"Best Cost of Travelling is : {self.path_for_climbing[i-1]}")
+        print("The cost of this path is : ", cost)
+
+g = Graph(4)
+g.add_all_edges()
+g.add_values()
+g.hill_climbing()
