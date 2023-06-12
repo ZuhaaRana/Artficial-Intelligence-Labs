@@ -1,30 +1,13 @@
+def sumOfLists(l1, l2):
+    l3 = []
+    l3.append(sum(l1))
+    l3.append(sum(l2))
 
-# Task 16
-# Write a python code to create a dictionary. And do the following tasks.
-# i. Create Dictionary = {“brand”:”Samsung”,”OS- type”:”Oreo”,”color”:”black”,”camera”:”42 megapixels”,”year”:2012}
-# ii. Then add a list in the current dictionary with key = “sizes” and values of random numbers.
-# iii. Then delete the “year” key from the dictionary.
-# iv. Lastly show the dictionary in following order. Use loop to show the dictionary:
-# a. Brand
-# b. Color
-# c. Camera
-# d. OS-type
-# e. Sizes
+    return l3
 
-from random import randint
-dict = {"brand" : "Samsung", "OS-type" : "Oreo", "color" : "black", "camera" : "42 megapixels", "year" : 2012}
-print("Original dictionary: {}".format(dict))
+list1 = [11,22,33,44,21,54,67,54,33,222,4]
+list2 = [3,4,5,32,21,33,66,75,87,97,1]
 
-print("\nAdding sizes..")
-dict['sizes'] = [randint(0, 100) for _ in range(5)]
+print("List1: {}\nList2: {}".format(list1, list2))
 
-print("\nUpdated dictionary: {}".format(dict))
-
-print("\nDeleting year..")
-
-del dict["year"]
-
-c = 97
-for k,v in dict.items():
-    print(f"{chr(c)}. {k} : {v}")
-    c += 1
+print("List 3: {}".format(sumOfLists(list1, list2)))
