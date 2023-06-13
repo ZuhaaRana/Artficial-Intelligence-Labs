@@ -150,3 +150,8 @@ if select == 1:
         S.Add_Student_data(STUDENT)
     elif select == 2:
         S.Delete_Student_data(int(input("Enter CNIC to delete student data : ")), STUDENT)
+elif select == 3:
+        S.Update_Student_data(int(input("Enter CNIC to search : ")), STUDENT)
+    elif select == 4:
+        A = S.Search_Student(int(input("Enter CNIC to search : ")), STUDENT)
+        A.Display_student_data()
