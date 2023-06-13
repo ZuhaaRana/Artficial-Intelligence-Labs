@@ -139,3 +139,9 @@ Second_student = Student()
 Second_student.Input()
 Third_student = Student()
 Third_student.Input()
+
+while 1:
+    select = int(input( "\n\nENTER YOUR CHOICE \n1) Add a new Student "
+                        "\n2) Delete a Student Data\n3) Update Student Data "
+                        "\n4) Search Student Data\n5) Display all Students Data "
+                        "\n6) Exit. "))
