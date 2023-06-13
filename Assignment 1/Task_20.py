@@ -145,3 +145,8 @@ while 1:
                         "\n2) Delete a Student Data\n3) Update Student Data "
                         "\n4) Search Student Data\n5) Display all Students Data "
                         "\n6) Exit. "))
+
+if select == 1:
+        S.Add_Student_data(STUDENT)
+    elif select == 2:
+        S.Delete_Student_data(int(input("Enter CNIC to delete student data : ")), STUDENT)
