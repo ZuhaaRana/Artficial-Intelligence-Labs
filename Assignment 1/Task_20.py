@@ -155,3 +155,7 @@ elif select == 3:
     elif select == 4:
         A = S.Search_Student(int(input("Enter CNIC to search : ")), STUDENT)
         A.Display_student_data()
+elif select == 5:
+        S.Display_All_Students(STUDENT)
+    elif select == 6:
+        exit(0)
