@@ -89,3 +89,15 @@ def Input(self):
         print(f"self.CGPA = {self.CGPA}")
         print(f"self.SGPA = {self.SGPA}")
         print(f"self.Current_Credit_Hours = {self.current_credit_hours}")
+
+def Display_All_Students(self, Students):
+        if len(Students) == 0:
+            print("\nNo Student with such CNIC found.")
+            return
+        for i in Students:
+            i.Display_student_data()
+
+    def Add_Student_data(self, Students):
+        NEW_STUDENT = Student()
+        NEW_STUDENT.Input()
+        Students.append(NEW_STUDENT)
