@@ -101,3 +101,17 @@ def Display_All_Students(self, Students):
         NEW_STUDENT = Student()
         NEW_STUDENT.Input()
         Students.append(NEW_STUDENT)
+
+def Delete_Student_data(self, cnic, Students):
+        DEL = self.Search_Student(cnic, Students)
+        if DEL != 0:
+            print("\nStudent record deleted.")
+            Students.remove(DEL)
+        else:
+            print("\nThere is no student with such CNIC.\n")
+
+    def Search_Student(self, cnic, Students):
+        for i in Students:
+            if i.cnic == cnic:
+                return i
+        return 0
