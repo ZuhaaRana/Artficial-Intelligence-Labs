@@ -62,3 +62,30 @@ class Student:
         self.current_credit_hours = value
     def set_current_credit_hours(self, value):
         self.current_credit_hours = value
+
+def Input(self):
+        print()
+        print()
+        self.first_name = input("Please Enter first name : ")
+        self.last_name = input("Please Enter last name : ")
+        self.age = int(input("Please Enter your age : "))
+        self.cnic = int(input("Enter your CNIC no : "))
+        self.gender = str(input("Please Enter your gender : "))
+        self.CGPA = float(input("Enter your CGPA : "))
+        self.SGPA = float(input("Enter your SGPA : "))
+        self.current_credit_hours = int(input("Enter your current credit hours : "))
+        i = 1
+        while i != 0:
+            self.courses.append(input("Please Enter a Course you want to register : "))
+            i = int(input("Do you want to enter another Course. Press any number for yes except 0 : "))
+
+    def Display_student_data(self):
+        print(f"First Name = {self.first_name}")
+        print(f"Last Name = {self.last_name}")
+        print(f"Age = {self.age}")
+        print(f"CNIC = {self.cnic}")
+        print(f"self.courses = {self.courses}")
+        print(f"self.gender = {self.gender}")
+        print(f"self.CGPA = {self.CGPA}")
+        print(f"self.SGPA = {self.SGPA}")
+        print(f"self.Current_Credit_Hours = {self.current_credit_hours}")
