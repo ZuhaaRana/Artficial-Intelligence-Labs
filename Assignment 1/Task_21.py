@@ -115,3 +115,13 @@ def Delete_Student_data(self, cnic, Students):
             if i.cnic == cnic:
                 return i
         return 0
+
+def Update_Student_data(self, cnic, Students):
+        UPDATE = self.Search_Student(cnic, Students)
+        if UPDATE != 0:
+            S = Student()
+            S.Input()
+            Students[Students.index(UPDATE)] = S
+            print("\nStudent data updated.")
+        else:
+            print("\nThere is no student with such CNIC.\n")
