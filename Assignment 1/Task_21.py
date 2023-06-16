@@ -125,3 +125,52 @@ def Update_Student_data(self, cnic, Students):
             print("\nStudent data updated.")
         else:
             print("\nThere is no student with such CNIC.\n")
+
+#creating objects of student class
+First_Student = Student()
+First_Student .Input()
+Second_Student = Student()
+Second_Student.Input()
+Third_Student = Student()
+Third_Student.Input()
+
+#creating a list of all the five objects of class
+List = [First_Student, Second_Student, Third_Student]
+#creating a Dictionary of all the five objects of class
+Dictionary = {'First_Student': First_Student, 'Second_Student': Second_Student, 'Third_Student': Third_Student}
+#creating a Tuple of all the five objects of class
+Tuple = (First_Student, Second_Student, Third_Student)
+
+#Student Data Displayed using List
+print("\n\nStudent Data Displayed using List")
+for i in List:
+    i.Display_student_data()
+    print("\n")
+#Student Data Displayed using Dictionary
+print("\n\nStudent Data Displayed using Dictionary")
+for i in Dictionary.keys():
+    Dictionary[i].Display_student_data()
+    print("\n")
+#Student Data Displayed using Tuple
+print("\n\nStudent Data Displayed using Tuple")
+for i in Tuple:
+    i.Display_student_data()
+    print("\n")
+
+
+#comparing list objects to tuple objects
+obj1,B,C =Tuple
+if List[0] == obj1:
+    print("\nList Objects are equal to Tuple objects")
+else:
+    print("Objects are not equal.")
+#comparing list objects to dictionary objects
+if List[0] == Dictionary['First_Student']:
+    print("\nList Objects are equal to Dictionary objects")
+else:
+    print("Objects are not equal.")
+#comparing tuple objects to dictionary objects
+if obj1==Dictionary['First_Student']:
+    print("\nTuple objects are equal to dictionary objects")
+else:
+    print("Objects are not equal.")
