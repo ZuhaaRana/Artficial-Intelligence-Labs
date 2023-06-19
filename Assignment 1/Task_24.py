@@ -1,3 +1,4 @@
 
-# Task 25
-# Implement the given graph using adjacency matrix
+# Task 24
+# Implement given graph using adjacency list
+
