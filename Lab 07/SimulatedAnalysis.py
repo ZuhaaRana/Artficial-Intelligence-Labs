@@ -1,4 +1,4 @@
-#Min Max Algorithm
+#Simulated Analysis Algorithm
 
 from collections import defaultdict
 
