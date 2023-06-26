@@ -1,25 +1,24 @@
 
 # Constraint Satisfaction Problems
 
-# 3.3
-# Find all (a,b,c) where a ∈ {3,7,9,3,6} and b ∈ {7,8,9,10}  where ‘a’ should # be a+1
-# equal to b and a not equal to c.
+# 3.4
 
 from constraint import *
 
 p = Problem()
-p.addVariable("a",[3,7,9,3,6])
-p.addVariable("b",[7,8,9,10])
-p.addVariable("c",[1,2,8])
+p.addVariable("A",['R','B','G'])
+p.addVariable("B",['R','B','G'])
+p.addVariable("C",['R','B','G'])
+p.addVariable("D",['R','B','G'])
 
+p.addConstraint(lambda A,B: A != B,["A","B"])
+p.addConstraint(lambda A,C: A != C,["A","C"])
+p.addConstraint(lambda A,D: A != D,["A","D"])
+p.addConstraint(lambda B,D: B != D,["B","D"])
+p.addConstraint(lambda C,D: C != D,["C","D"])
 
-print("Solutions without constraints : ",p.getSolutions())
+print("Solutions : ", p.getSolutions())
 
-p.addConstraint(lambda a,b: a+1 == b,["a","b"])
-
-p.addConstraint(lambda a,c: a != c,["a","c"])
-
-print("Solutions with constraints : ",p.getSolutions())
 
 
 
