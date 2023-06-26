@@ -2,6 +2,7 @@
 # Constraint Satisfaction Problems
 
 # 3.4
+# All the combinations of R, G, B
 
 from constraint import *
 
