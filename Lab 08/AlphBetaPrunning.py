@@ -1,56 +1,29 @@
-# BEST FIRST SEARCH ALGORITHM
+# Alpha Beta Prunning
 
-# Value of heuristics
-A = 40
-B = 32
-C = 25
-D = 35
-E = 19
-F = 17
-H = 10
-G = 0
-graph = 
-{
-    'A': [('B', B), ('C', C), ('D', D)],
-    'B': [('E', E), ('A', A)],
-    'C': [('E', E), ('F', F), ('A', A)],
-    'D': [('A', A), ('F', F)],
-    'E': [('C', C), ('B', B), ('H', H)],
-    'F': [('G', G), ('D', D), ('C', C)],
-    'G': [('F', F), ('H', H)],
-    'H': [('E', E), ('G', G)]
-}
+maximun_value, minimum_value = 1000,  -1000
 
+def ALPHA_BETA_PRUNNING(depth, nodeIndex, max_Player, values, alpha_value, beta_value):
+    if depth == 4:
+        return values[nodeIndex]
 
-def heuristic(path):
-    value = 0
-    for (node, cost) in path:
-        value = cost
-    return value, path[-1][0]
+    if max_Player:
+        for i in range(0, 2):
+            value = ALPHA_BETA_PRUNNING(depth + 1, nodeIndex * 2 + i,False, values, alpha_value, beta_value)
+            optimal_value = max(minimum_value, value)
+            alpha_value = max(alpha_value, minimum_value)
+            if beta_value <= alpha_value:
+                break
+        return optimal_value
+    else:
+        for i in range(0, 2):
+            value = ALPHA_BETA_PRUNNING(depth + 1, nodeIndex * 2 + i, True, values, alpha_value, beta_value)
+            optimal_value = min(maximun_value, value)
+            beta_value = min(beta_value, maximun_value)
+            if beta_value <= alpha_value:
+                break
+        return optimal_value
 
+if __name__ == "__main__":
+    assigned_values = [4,3,6,2,2,1,9,5,3,1,5,4,7,5] 
 
-def BEST_FIRST_SEARCH(graph, start, goal):
-    visited = []
-    queue = [[(start, 0)]]
-    while queue:
-        # Sort by cost
-        queue.sort(key=heuristic)
-        # Pop lowest cost
-        path = queue.pop(0)
-        node = path[-1][0]
-        if node in visited:
-            continue
-        visited.append(node)
-        if node == goal:
-            print("Expanded path for Best First Search is : ", visited)
-            return path
-        else:
-            adjacent = graph.get(node, [])
-            for (node2, cost) in adjacent:
-                new_path = path.copy()
-                new_path.append((node2, cost))
-                queue.append(new_path)
-
-
-sol = BEST_FIRST_SEARCH(graph, 'A', 'G')
-print("Path along with costs is : ", sol)
+    print("The value acording to alpha beta prunning is ", ALPHA_BETA_PRUNNING(0, 0, True, assigned_values, minimum_value, maximun_value))
