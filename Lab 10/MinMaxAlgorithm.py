@@ -1,32 +1,27 @@
 
-# Constraint Satisfaction Problems
+# MinMax Algorithm
 
-# 3.6
-# Define a problem with no solution.
+import math
+def MINMAX(current_depth,node,max_turn,score,total_depth):
+    if(current_depth==total_depth):
+        return score[node]
+    if(max_turn):
+        return max(MINMAX(current_depth+1,node*2,False,score,total_depth),
+                   MINMAX(current_depth+1,node*2+1,False,score,total_depth))
+    else:
+        return min(MINMAX(current_depth+1,node*2,True,score,total_depth),
+                   MINMAX(current_depth+1,node*2+1,True,score,total_depth))
 
-from constraint import *
-p = Problem()
+score =[]
+x = int(input("Enter total leaf nodes : "))
+for i in range(x):
+    y = int(input("Enter the value of leaf node : "))
+    score.append(y)
 
-p.addVariable("A",['R','B','G'])
-p.addVariable("B",['R','B','G'])
-p.addVariable("C",['R','B','G'])
-p.addVariable("D",['R','B','G'])
-p.addVariable("E",['R','B','G'])
-p.addVariable("F",['R','B','G'])
-p.addVariable("G",['R','B','G'])
-p.addVariable("H",['R','B','G'])
-
-p.addConstraint(lambda A,B: A != B,["A","B"])
-p.addConstraint(lambda A,C: A != C,["A","C"])
-p.addConstraint(lambda B,D: B != D,["B","D"])
-p.addConstraint(lambda C,D: C != D,["C","D"])
-p.addConstraint(lambda C,B: C != B,["C","B"])
-p.addConstraint(lambda C,E: C != E,["C","E"])
-p.addConstraint(lambda E,F: F != F,["E","F"])
-p.addConstraint(lambda E,C: E != C,["E","C"])
-p.addConstraint(lambda F,D: F != D,["F","D"])
-p.addConstraint(lambda F,G: F != G,["F","G"])
-
-print("Total Solutions : ",len(p.getSolutions()))
-
-print("Solutions : ",p.getSolutions())
+total_depth = math.log(len(score),2)
+current_depth = int(input("Enter current depth : "))
+node = int(input("Enter node value : "))
+max_turn=True
+print("The answer according to the minmax algorithm is : ",end=" ")
+answer=(MINMAX(current_depth,node,max_turn,score,total_depth))
+print(answer)
