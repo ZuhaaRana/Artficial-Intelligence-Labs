@@ -1,56 +1,21 @@
 
-# BEST FIRST SEARCH ALGORITHM
+import csv
+from matplotlib import pyplot as plt
+import pandas as py
 
-# Value of heuristics
+with open('data.csv') as file:
+    reader = csv.reader(file)
+    count = 0
+    for row in reader:
+        print(row)
+        if count > 200:
+            break
+        count+=1
 
-A = 40
-B = 32
-C = 25
-D = 35
-E = 19
-F = 17
-H = 10
-G = 0
+show_scatter_plot = py.read_csv (r'data.csv')
+x = show_scatter_plot["Annual_Income_(k$)"]
+y = show_scatter_plot["Age"]
+plt.scatter(x,y)
+plt.show()
 
-graph = 
-{
-    'A': [('B', B), ('C', C), ('D', D)],
-    'B': [('E', E), ('A', A)],
-    'C': [('E', E), ('F', F), ('A', A)],
-    'D': [('A', A), ('F', F)],
-    'E': [('C', C), ('B', B), ('H', H)],
-    'F': [('G', G), ('D', D), ('C', C)],
-    'G': [('F', F), ('H', H)],
-    'H': [('E', E), ('G', G)]
-}
-
-def heuristic(path):
-    value = 0
-    for (node, cost) in path:
-        value = cost
-    return value, path[-1][0]
-
-def BEST_FIRST_SEARCH(graph, start, goal):
-    visited = []
-    queue = [[(start, 0)]]
-    while queue:
-        # Sort by cost
-        queue.sort(key=heuristic)
-        # Pop lowest cost
-        path = queue.pop(0)
-        node = path[-1][0]
-        if node in visited:
-            continue
-        visited.append(node)
-        if node == goal:
-            print("Expanded path for Best First Search is : ", visited)
-            return path
-        else:
-            adjacent = graph.get(node, [])
-            for (node2, cost) in adjacent:
-                new_path = path.copy()
-                new_path.append((node2, cost))
-                queue.append(new_path)
-
-sol = BEST_FIRST_SEARCH(graph, 'A', 'G')
-print("Path along with costs is : ", sol)
+        
